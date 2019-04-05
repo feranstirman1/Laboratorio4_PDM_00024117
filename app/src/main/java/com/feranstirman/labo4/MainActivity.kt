@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             if(!movieInfo.isEmpty()){
                 var movieJson = JSONObject(movieInfo)
                 if(movieJson.getString("Response")=="true"){
-                    val movie = Gson().fromJson<Movie>(movieInfo.Movie::class.java)
+                    val movie = Gson().fromJson<Movie>(movieInfo,Movie::class.java)
                 }else{
                     Snackbar.make(main_ll,"no existe la pelicula en la base",Snackbar.LENGTH_SHORT).show()
                 }
