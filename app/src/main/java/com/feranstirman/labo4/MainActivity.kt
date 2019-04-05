@@ -61,12 +61,14 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPostExecute(movieInfo: String?) {
             super.onPostExecute(movieInfo)
-            if(!movieInfo.isEmpty()){
-                var movieJson = JSONObject(movieInfo)
-                if(movieJson.getString("Response")=="true"){
-                    val movie = Gson().fromJson<Movie>(movieInfo,Movie::class.java)
-                }else{
-                    Snackbar.make(main_ll,"no existe la pelicula en la base",Snackbar.LENGTH_SHORT).show()
+            if (movieInfo != null) {
+                if(!movieInfo.isEmpty()){
+                    var movieJson = JSONObject(movieInfo)
+                    if(movieJson.getString("Response")=="true"){
+                        val movie = Gson().fromJson<Movie>(movieInfo,Movie::class.java)
+                    }else{
+                        Snackbar.make(main_ll,"no existe la pelicula en la base",Snackbar.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
